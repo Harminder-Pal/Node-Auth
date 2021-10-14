@@ -3,25 +3,25 @@
     <head>
         <meta charset="UTF-8" />
         <meta name = "viewport" content  = "width=device-width, initial-scale = 1.0"/>
-        <title>Login</title>
+        <title>Document</title>
     </head>
     <body>
-        <h1>Login</h1>
-        <form id ="Login-Form">
+        <h1>Registration</h1>
+        <form id ="Reg-Form">
             <input type = "text" autocomplete="off" id = "username" placeholder = "username" />
             <input type = "text" autocomplete="off" id = "password" placeholder = "password" />
             <input type = "submit" value= "Submit Form" />
         </form>
         <script>
-            const form = document.getElementById('Login-Form')
-            form.addEventListener('submit', login)
+            const form = document.getElementById('Reg-Form')
+            form.addEventListener('submit', registerUser)
 
-            async function login(event){
+            async function registerUser(event){
                 event.preventDefault()
                 const username = document.getElementById('username').value
                 const password = document.getElementById('password').value
 
-                const result = await fetch('/api/login',{
+                const result = await fetch('/api/register',{
                     method: 'POST',
                     headers:{
                         'Content-Type': 'application/json'
@@ -34,7 +34,6 @@
 
                 if(result.status === 'ok'){
                     //everything went ok
-                    console.log('Got the token:', result.data)
                     alert('success')
                 }else{
                     alert(result.error);
